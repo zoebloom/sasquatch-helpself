@@ -1,0 +1,1064 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sneaky Sasquatch 攻略站 MVP</title>
+    <meta
+      name="description"
+      content="Sneaky Sasquatch 中文攻略站 MVP：新手路线、赚钱方法、地图地点、任务卡点与 FAQ。"
+    />
+    <style>
+      :root {
+        --forest: #173b2f;
+        --forest-2: #0f2a23;
+        --leaf: #3e7b4f;
+        --moss: #7b9851;
+        --sun: #f2b84b;
+        --river: #3e89a8;
+        --paper: #f7f1df;
+        --card: #fffaf0;
+        --ink: #17251e;
+        --muted: #66736b;
+        --line: rgba(23, 37, 30, 0.14);
+        --shadow: 0 18px 45px rgba(15, 42, 35, 0.16);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(242, 184, 75, 0.18), transparent 30rem),
+          linear-gradient(180deg, #f8f3e6 0%, #edf3e4 52%, #f6edd7 100%);
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .site-shell {
+        min-height: 100vh;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 14px clamp(18px, 4vw, 56px);
+        color: #f9f4df;
+        background: rgba(15, 42, 35, 0.92);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(16px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        flex: 0 0 auto;
+        color: var(--forest);
+        font-weight: 900;
+        background: var(--sun);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+      }
+
+      .brand strong {
+        display: block;
+        line-height: 1.05;
+      }
+
+      .brand span {
+        display: block;
+        margin-top: 2px;
+        color: rgba(249, 244, 223, 0.72);
+        font-size: 12px;
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .nav a {
+        padding: 8px 10px;
+        color: rgba(249, 244, 223, 0.82);
+        font-size: 14px;
+        text-decoration: none;
+        border-radius: 8px;
+      }
+
+      .nav a:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .hero {
+        position: relative;
+        min-height: clamp(560px, 78vh, 760px);
+        display: grid;
+        align-items: end;
+        padding: 90px clamp(18px, 4vw, 56px) 42px;
+        overflow: hidden;
+        color: #fff8dc;
+        background-image:
+          linear-gradient(90deg, rgba(12, 33, 27, 0.9) 0%, rgba(12, 33, 27, 0.58) 45%, rgba(12, 33, 27, 0.2) 100%),
+          linear-gradient(180deg, rgba(12, 33, 27, 0.1) 0%, rgba(12, 33, 27, 0.8) 100%),
+          url("./assets/sasquatch-hero.jpeg");
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: cover;
+      }
+
+      .hero::after {
+        position: absolute;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        height: 64px;
+        content: "";
+        background: linear-gradient(180deg, transparent, #f8f3e6);
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        width: min(960px, 100%);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 18px;
+        padding: 8px 10px;
+        color: #16362c;
+        font-size: 13px;
+        font-weight: 800;
+        background: rgba(242, 184, 75, 0.94);
+        border-radius: 8px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 800px;
+        margin-bottom: 18px;
+        font-size: clamp(42px, 7vw, 82px);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+
+      .hero-copy {
+        max-width: 720px;
+        margin-bottom: 26px;
+        color: rgba(255, 248, 220, 0.9);
+        font-size: clamp(17px, 2.1vw, 22px);
+        line-height: 1.65;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 32px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 12px 16px;
+        color: #122a22;
+        font-weight: 900;
+        text-decoration: none;
+        background: var(--sun);
+        border: 0;
+        border-radius: 8px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+      }
+
+      .button.secondary {
+        color: #fff8dc;
+        background: rgba(255, 255, 255, 0.13);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: none;
+      }
+
+      .quick-stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        max-width: 980px;
+      }
+
+      .stat {
+        min-height: 118px;
+        padding: 16px;
+        background: rgba(16, 42, 34, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 8px;
+        backdrop-filter: blur(12px);
+      }
+
+      .stat strong {
+        display: block;
+        margin-bottom: 6px;
+        color: #fff;
+        font-size: 24px;
+      }
+
+      .stat span {
+        color: rgba(255, 248, 220, 0.82);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      main {
+        display: grid;
+        gap: 34px;
+        padding: 0 clamp(18px, 4vw, 56px) 54px;
+      }
+
+      section {
+        scroll-margin-top: 88px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 18px;
+      }
+
+      .section-head h2 {
+        margin-bottom: 8px;
+        font-size: clamp(26px, 3vw, 38px);
+        line-height: 1.1;
+      }
+
+      .section-head p {
+        max-width: 680px;
+        margin-bottom: 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .band {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+      }
+
+      .need-grid,
+      .roadmap,
+      .money-grid,
+      .task-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .need-card,
+      .guide-card,
+      .day-card,
+      .money-card,
+      .task-card,
+      .source-card {
+        padding: 18px;
+        background: rgba(255, 250, 240, 0.88);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: 0 10px 24px rgba(23, 37, 30, 0.07);
+      }
+
+      .need-card h3,
+      .guide-card h3,
+      .day-card h3,
+      .money-card h3,
+      .task-card h3 {
+        margin-bottom: 8px;
+        font-size: 18px;
+      }
+
+      .need-card p,
+      .guide-card p,
+      .day-card p,
+      .money-card p,
+      .task-card p,
+      .source-card p {
+        margin-bottom: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .guide-panel {
+        padding: 18px;
+        background: rgba(23, 59, 47, 0.08);
+        border: 1px solid rgba(23, 59, 47, 0.13);
+        border-radius: 8px;
+      }
+
+      .guide-toolbar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+
+      .search {
+        width: 100%;
+        min-height: 48px;
+        padding: 0 14px;
+        color: var(--ink);
+        background: #fffdf7;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        outline: none;
+      }
+
+      .search:focus {
+        border-color: var(--leaf);
+        box-shadow: 0 0 0 3px rgba(62, 123, 79, 0.18);
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .chip {
+        min-height: 38px;
+        padding: 8px 12px;
+        color: var(--forest);
+        font-size: 14px;
+        font-weight: 800;
+        background: #fffdf7;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .chip.active {
+        color: #fffdf7;
+        background: var(--forest);
+        border-color: var(--forest);
+      }
+
+      .guide-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .guide-card {
+        position: relative;
+        min-height: 220px;
+        display: grid;
+        align-content: start;
+        gap: 12px;
+      }
+
+      .tagline {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 3px 8px;
+        color: var(--forest);
+        font-size: 12px;
+        font-weight: 800;
+        background: rgba(62, 123, 79, 0.12);
+        border-radius: 8px;
+      }
+
+      .tag.hot {
+        color: #5b3500;
+        background: rgba(242, 184, 75, 0.35);
+      }
+
+      .guide-card ul,
+      .money-card ul,
+      .task-card ul {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding-left: 18px;
+        color: #3d4b43;
+        line-height: 1.55;
+      }
+
+      .empty-state {
+        padding: 22px;
+        color: var(--muted);
+        text-align: center;
+        background: rgba(255, 250, 240, 0.88);
+        border: 1px dashed rgba(23, 37, 30, 0.2);
+        border-radius: 8px;
+      }
+
+      .day-card {
+        min-height: 182px;
+      }
+
+      .day-card .day {
+        display: inline-flex;
+        margin-bottom: 12px;
+        padding: 5px 9px;
+        color: #fffdf7;
+        font-size: 12px;
+        font-weight: 900;
+        background: var(--river);
+        border-radius: 8px;
+      }
+
+      .money-card {
+        border-top: 5px solid var(--leaf);
+      }
+
+      .money-card:nth-child(2) {
+        border-top-color: var(--sun);
+      }
+
+      .money-card:nth-child(3) {
+        border-top-color: var(--river);
+      }
+
+      .location-table {
+        overflow: hidden;
+        background: rgba(255, 250, 240, 0.9);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: 0 10px 24px rgba(23, 37, 30, 0.07);
+      }
+
+      .table-row {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr 1.4fr;
+        gap: 16px;
+        padding: 16px 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .table-row:last-child {
+        border-bottom: 0;
+      }
+
+      .table-row.header {
+        color: #fffdf7;
+        font-weight: 900;
+        background: var(--forest);
+      }
+
+      .table-row:not(.header) span:first-child {
+        font-weight: 900;
+      }
+
+      .table-row span {
+        line-height: 1.55;
+      }
+
+      .faq {
+        display: grid;
+        gap: 10px;
+      }
+
+      details {
+        padding: 16px 18px;
+        background: rgba(255, 250, 240, 0.9);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      summary {
+        color: var(--forest);
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      details p {
+        margin: 12px 0 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .source-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .source-card a {
+        display: inline-flex;
+        margin-top: 10px;
+        color: var(--river);
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      footer {
+        padding: 28px clamp(18px, 4vw, 56px) 40px;
+        color: rgba(249, 244, 223, 0.75);
+        background: var(--forest-2);
+      }
+
+      footer .band {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        line-height: 1.55;
+      }
+
+      @media (max-width: 920px) {
+        .topbar,
+        .section-head,
+        footer .band {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .nav {
+          justify-content: flex-start;
+        }
+
+        .quick-stats,
+        .need-grid,
+        .roadmap,
+        .money-grid,
+        .task-grid,
+        .guide-grid,
+        .source-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .guide-toolbar {
+          grid-template-columns: 1fr;
+        }
+
+        .filters {
+          justify-content: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          min-height: 680px;
+          padding-top: 118px;
+          background-position: center top;
+        }
+
+        .quick-stats,
+        .need-grid,
+        .roadmap,
+        .money-grid,
+        .task-grid,
+        .guide-grid,
+        .source-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .table-row,
+        .table-row.header {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+
+        .table-row.header {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <main style="padding: 32px; font-family: system-ui, sans-serif">
+        正在加载 Sneaky Sasquatch 攻略站 MVP...
+      </main>
+    </div>
+
+    <script src="./assets/react.production.min.js"></script>
+    <script src="./assets/react-dom.production.min.js"></script>
+    <script>
+      // 这个 MVP 先用 React UMD + createElement，避免引入构建流程，用户可以直接打开 HTML 预览。
+      const { useMemo, useState } = React;
+      const h = React.createElement;
+
+      const categories = ["全部", "新手", "赚钱", "地点", "任务", "卡点"];
+
+      // 攻略卡片是 MVP 的核心内容模型，后续可以替换成 CMS、Markdown 或接口数据。
+      const guides = [
+        {
+          title: "开局 30 分钟路线",
+          category: "新手",
+          tags: ["低剧透", "第一天"],
+          summary: "先把饥饿、背包、基本潜行和第一笔金币跑通，让玩家不会在营地乱逛。",
+          steps: ["进野餐区偷食物，避开巡逻视线", "卖掉多余食物或完成短任务", "优先记住回营地路线和睡觉节奏"],
+        },
+        {
+          title: "稳定赚钱优先级",
+          category: "赚钱",
+          tags: ["金币", "效率"],
+          summary: "新手期先做低风险收入，中期再转向需要载具或执照的玩法。",
+          steps: ["前期：食物、钓鱼、简单差事", "中期：比赛、送货、地图工作", "后期：按任务线解锁更高收益入口"],
+        },
+        {
+          title: "营地与城镇怎么串起来",
+          category: "地点",
+          tags: ["地图", "路线"],
+          summary: "把常去地点按目的拆分，减少来回跑图的时间浪费。",
+          steps: ["营地负责休息、存放和早期补给", "城镇负责商店、工作和证件相关内容", "海边、赛道、滑雪场作为中期专题区域"],
+        },
+        {
+          title: "主线推进检查表",
+          category: "任务",
+          tags: ["主线", "清单"],
+          summary: "用清单方式确认自己卡在哪个前置条件，而不是盲目刷钱。",
+          steps: ["确认是否缺伪装、工具或执照", "确认是否触发了目标 NPC 对话", "确认是否需要等到指定时段"],
+        },
+        {
+          title: "被护林员发现怎么办",
+          category: "卡点",
+          tags: ["潜行", "逃脱"],
+          summary: "把失败成本降到最低，学会利用遮挡、绕路和时机。",
+          steps: ["看到警觉提示先离开视线", "不要在开阔区域直线跑", "提前规划回草丛、厕所或建筑的路线"],
+        },
+        {
+          title: "钓鱼和收集先做哪些",
+          category: "新手",
+          tags: ["收集", "金币"],
+          summary: "收集内容很多，MVP 先帮玩家区分“顺手做”和“以后补”。",
+          steps: ["路过水域顺手钓，不专门硬刷", "先记录稀有鱼地点，后续做专题图鉴", "收集奖励和主线前置分开管理"],
+        },
+      ];
+
+      const needs = [
+        {
+          title: "快速知道下一步",
+          text: "新玩家最强烈的需求不是完整百科，而是“我现在该去哪里、先买什么、怎么不亏时间”。",
+        },
+        {
+          title: "按场景查答案",
+          text: "移动端玩家通常边玩边搜，需要用地点、任务、赚钱、卡点这些口语化入口，而不是复杂目录。",
+        },
+        {
+          title: "控制剧透深度",
+          text: "攻略站要让玩家可以看新手提示，也能进入详细清单；MVP 先用标签标明低剧透和主线内容。",
+        },
+        {
+          title: "中文化信息整理",
+          text: "现有资料分散，中文用户需要统一译名、步骤化路线和可搜索内容，降低来回翻资料的成本。",
+        },
+        {
+          title: "赚钱与解锁效率",
+          text: "金币、载具、执照和工具决定探索效率，所以赚钱优先级和解锁前置是高频需求。",
+        },
+        {
+          title: "持续更新入口",
+          text: "攻略站后续要能扩展到版本更新、图鉴、地图标注和评论纠错；MVP 先预留资料来源与贡献模块。",
+        },
+      ];
+
+      const roadmap = [
+        ["Day 1", "吃饱与潜行", "熟悉营地、野餐区、背包容量和护林员视线。"],
+        ["Day 2", "攒第一笔钱", "做低风险金币来源，优先买能提升探索效率的基础物品。"],
+        ["Day 3", "打开城镇路线", "确认城镇入口、商店、关键 NPC 和常用交通方式。"],
+        ["Day 4", "补证件与工具", "围绕执照、伪装、工具做清单，解除中期内容门槛。"],
+        ["Day 5", "选择主赚钱线", "根据已解锁内容选择比赛、工作或收集路线。"],
+        ["Day 6", "推进主线目标", "按前置条件查缺补漏，避免在错误地点反复尝试。"],
+      ];
+
+      const moneyMethods = [
+        {
+          title: "前期：野餐食物 + 钓鱼",
+          level: "低门槛",
+          points: ["不依赖复杂解锁", "适合边探索边积累金币", "效率不高，但失败成本低"],
+        },
+        {
+          title: "中期：比赛与差事",
+          level: "高效率",
+          points: ["需要载具、执照或路线熟悉度", "适合集中刷钱", "建议先做一条固定路线"],
+        },
+        {
+          title: "后期：职业与专题玩法",
+          level: "长期收益",
+          points: ["前置较多，但奖励稳定", "适合配合主线推进", "后续可拆成独立赚钱专题"],
+        },
+      ];
+
+      const locations = [
+        ["营地", "休息、存放、开局循环", "每天结束前回到这里，避免在远处浪费时间。"],
+        ["野餐区", "食物、潜行练习、早期资源", "先观察游客与护林员，再决定偷拿路线。"],
+        ["城镇", "商店、工作、证件、剧情入口", "中期核心枢纽，建议单独做城镇任务页。"],
+        ["赛道", "比赛、载具升级、刷钱", "需要一定操作与前置，适合中期后集中攻略。"],
+        ["码头/水域", "钓鱼、船只、收集", "图鉴向内容很多，MVP 先给玩家入口提示。"],
+      ];
+
+      const tasks = [
+        {
+          title: "新手任务线",
+          tags: ["低剧透", "必做"],
+          points: ["建立每日循环", "拿到稳定金币来源", "解锁更远区域探索能力"],
+        },
+        {
+          title: "主线推进线",
+          tags: ["剧情", "前置"],
+          points: ["确认关键 NPC", "检查工具和伪装", "标记卡住的地点与时段"],
+        },
+        {
+          title: "收集完成线",
+          tags: ["图鉴", "长期"],
+          points: ["鱼类、藏宝、服装等分专题", "先记录，后补全", "避免影响主线节奏"],
+        },
+      ];
+
+      const faqs = [
+        ["这个 MVP 先解决什么？", "先解决新手从 0 到能稳定游玩的路径，以及中期最常搜的赚钱、地点、任务卡点。完整图鉴和互动地图会放到下一阶段。"],
+        ["为什么首页要有需求分析？", "攻略站早期最重要的是验证信息架构。把用户需求放在页面里，后续讨论时可以直接改模块，而不是只看视觉稿。"],
+        ["后续最值得做的功能是什么？", "优先做攻略详情页、可勾选清单、地点索引、版本更新记录和玩家投稿纠错入口。"],
+        ["内容是否完全等于最终攻略？", "不是。当前内容是 MVP 级别的信息架构和示例攻略，需要后续结合玩家实测、截图和版本资料继续补全。"],
+      ];
+
+      function TagList({ tags }) {
+        return h(
+          "div",
+          { className: "tagline" },
+          tags.map((tag, index) =>
+            h("span", { className: `tag ${index === 0 ? "hot" : ""}`, key: tag }, tag)
+          )
+        );
+      }
+
+      function App() {
+        const [query, setQuery] = useState("");
+        const [category, setCategory] = useState("全部");
+
+        const filteredGuides = useMemo(() => {
+          const keyword = query.trim().toLowerCase();
+          return guides.filter((guide) => {
+            const categoryMatched = category === "全部" || guide.category === category;
+            const text = `${guide.title} ${guide.category} ${guide.tags.join(" ")} ${guide.summary} ${guide.steps.join(" ")}`.toLowerCase();
+            return categoryMatched && (!keyword || text.includes(keyword));
+          });
+        }, [query, category]);
+
+        return h(
+          "div",
+          { className: "site-shell" },
+          h(
+            "header",
+            { className: "topbar" },
+            h(
+              "div",
+              { className: "brand" },
+              h("div", { className: "brand-mark" }, "S"),
+              h("div", null, h("strong", null, "Sasquatch Guide"), h("span", null, "中文攻略站 MVP"))
+            ),
+            h(
+              "nav",
+              { className: "nav", "aria-label": "主导航" },
+              h("a", { href: "#needs" }, "用户需求"),
+              h("a", { href: "#guides" }, "攻略入口"),
+              h("a", { href: "#roadmap" }, "新手路线"),
+              h("a", { href: "#money" }, "赚钱"),
+              h("a", { href: "#locations" }, "地点"),
+              h("a", { href: "#faq" }, "FAQ")
+            )
+          ),
+          h(
+            "section",
+            { className: "hero" },
+            h(
+              "div",
+              { className: "hero-content" },
+              h("p", { className: "eyebrow" }, "MVP 原型 · Sneaky Sasquatch 中文攻略"),
+              h("h1", null, "从第一天开始，把每一步都玩明白"),
+              h(
+                "p",
+                { className: "hero-copy" },
+                "面向边玩边查的玩家：先给清晰路线、赚钱优先级、地点入口和常见卡点，再逐步扩展成图鉴、互动地图与版本更新资料库。"
+              ),
+              h(
+                "div",
+                { className: "hero-actions" },
+                h("a", { className: "button", href: "#guides" }, "开始查攻略"),
+                h("a", { className: "button secondary", href: "#needs" }, "查看需求分析")
+              ),
+              h(
+                "div",
+                { className: "quick-stats", "aria-label": "MVP 核心指标" },
+                h("div", { className: "stat" }, h("strong", null, "6"), h("span", null, "个首批攻略入口，覆盖新手、赚钱、地点、任务与卡点")),
+                h("div", { className: "stat" }, h("strong", null, "3"), h("span", null, "条玩家主路径：开局、推进、收集")),
+                h("div", { className: "stat" }, h("strong", null, "5"), h("span", null, "个核心地点，支撑后续地图索引")),
+                h("div", { className: "stat" }, h("strong", null, "1"), h("span", null, "个可直接打开的 React 单页 MVP"))
+              )
+            )
+          ),
+          h(
+            "main",
+            null,
+            h(
+              "section",
+              { id: "needs", className: "band" },
+              h(
+                "div",
+                { className: "section-head" },
+                h("div", null, h("h2", null, "用户需求分析"), h("p", null, "攻略站的第一批用户不是来读百科的，而是来缩短试错时间的。MVP 先覆盖最高频、最容易验证价值的需求。"))
+              ),
+              h(
+                "div",
+                { className: "need-grid" },
+                needs.map((need) =>
+                  h("article", { className: "need-card", key: need.title }, h("h3", null, need.title), h("p", null, need.text))
+                )
+              )
+            ),
+            h(
+              "section",
+              { id: "guides", className: "band" },
+              h(
+                "div",
+                { className: "section-head" },
+                h("div", null, h("h2", null, "攻略入口"), h("p", null, "用搜索和标签模拟未来的内容库。现在的数据是示例内容，但结构已经能扩展到详情页和 CMS。"))
+              ),
+              h(
+                "div",
+                { className: "guide-panel" },
+                h(
+                  "div",
+                  { className: "guide-toolbar" },
+                  h("input", {
+                    className: "search",
+                    value: query,
+                    onChange: (event) => setQuery(event.target.value),
+                    placeholder: "搜索：金币、城镇、护林员、钓鱼、主线...",
+                    "aria-label": "搜索攻略",
+                  }),
+                  h(
+                    "div",
+                    { className: "filters", "aria-label": "攻略分类筛选" },
+                    categories.map((item) =>
+                      h(
+                        "button",
+                        {
+                          className: `chip ${category === item ? "active" : ""}`,
+                          key: item,
+                          onClick: () => setCategory(item),
+                          type: "button",
+                        },
+                        item
+                      )
+                    )
+                  )
+                ),
+                filteredGuides.length
+                  ? h(
+                      "div",
+                      { className: "guide-grid" },
+                      filteredGuides.map((guide) =>
+                        h(
+                          "article",
+                          { className: "guide-card", key: guide.title },
+                          h(TagList, { tags: [guide.category, ...guide.tags] }),
+                          h("h3", null, guide.title),
+                          h("p", null, guide.summary),
+                          h(
+                            "ul",
+                            null,
+                            guide.steps.map((step) => h("li", { key: step }, step))
+                          )
+                        )
+                      )
+                    )
+                  : h("div", { className: "empty-state" }, "没有找到匹配攻略，后续可以在这里接入投稿和搜索建议。")
+              )
+            ),
+            h(
+              "section",
+              { id: "roadmap", className: "band" },
+              h(
+                "div",
+                { className: "section-head" },
+                h("div", null, h("h2", null, "新手 6 天路线"), h("p", null, "把开局拆成可执行的小目标，让玩家不用一次性理解所有系统。"))
+              ),
+              h(
+                "div",
+                { className: "roadmap" },
+                roadmap.map(([day, title, text]) =>
+                  h("article", { className: "day-card", key: day }, h("span", { className: "day" }, day), h("h3", null, title), h("p", null, text))
+                )
+              )
+            ),
+            h(
+              "section",
+              { id: "money", className: "band" },
+              h(
+                "div",
+                { className: "section-head" },
+                h("div", null, h("h2", null, "赚钱优先级"), h("p", null, "金币攻略需要按玩家阶段排序，而不是简单罗列所有方法。"))
+              ),
+              h(
+                "div",
+                { className: "money-grid" },
+                moneyMethods.map((method) =>
+                  h(
+                    "article",
+                    { className: "money-card", key: method.title },
+                    h(TagList, { tags: [method.level] }),
+                    h("h3", null, method.title),
+                    h(
+                      "ul",
+                      null,
+                      method.points.map((point) => h("li", { key: point }, point))
+                    )
+                  )
+                )
+              )
+            ),
+            h(
+              "section",
+              { id: "locations", className: "band" },
+              h(
+                "div",
+                { className: "section-head" },
+                h("div", null, h("h2", null, "地点索引雏形"), h("p", null, "MVP 先做地点的用途和建议，下一步可以扩展为互动地图与路线图。"))
+              ),
+              h(
+                "div",
+                { className: "location-table" },
+                h("div", { className: "table-row header" }, h("span", null, "地点"), h("span", null, "主要用途"), h("span", null, "攻略建议")),
+                locations.map(([place, use, tip]) =>
+                  h("div", { className: "table-row", key: place }, h("span", null, place), h("span", null, use), h("span", null, tip))
+                )
+              )
+            ),
+            h(
+              "section",
+              { id: "tasks", className: "band" },
+              h(
+                "div",
+                { className: "section-head" },
+                h("div", null, h("h2", null, "任务内容分层"), h("p", null, "攻略内容不应该全部挤在一个列表里，要按玩家目标拆成三条主线。"))
+              ),
+              h(
+                "div",
+                { className: "task-grid" },
+                tasks.map((task) =>
+                  h(
+                    "article",
+                    { className: "task-card", key: task.title },
+                    h(TagList, { tags: task.tags }),
+                    h("h3", null, task.title),
+                    h(
+                      "ul",
+                      null,
+                      task.points.map((point) => h("li", { key: point }, point))
+                    )
+                  )
+                )
+              )
+            ),
+            h(
+              "section",
+              { id: "faq", className: "band" },
+              h(
+                "div",
+                { className: "section-head" },
+                h("div", null, h("h2", null, "FAQ 与下一步"), h("p", null, "把 MVP 的边界说清楚，便于后续决定是先补内容、做地图，还是做详情页。"))
+              ),
+              h(
+                "div",
+                { className: "faq" },
+                faqs.map(([question, answer], index) =>
+                  h("details", { key: question, open: index === 0 }, h("summary", null, question), h("p", null, answer))
+                )
+              )
+            ),
+            h(
+              "section",
+              { id: "sources", className: "band" },
+              h(
+                "div",
+                { className: "section-head" },
+                h("div", null, h("h2", null, "资料来源与约束"), h("p", null, "MVP 使用官方公开信息确认游戏方向；详细数值、路线和收集资料需要后续实测补全。"))
+              ),
+              h(
+                "div",
+                { className: "source-grid" },
+                h(
+                  "article",
+                  { className: "source-card" },
+                  h("h3", null, "官方站点"),
+                  h("p", null, "用于确认游戏身份和视觉资产方向。"),
+                  h("a", { href: "https://sneakysasquatch.com/", target: "_blank", rel: "noreferrer" }, "打开 Sneaky Sasquatch 官网")
+                ),
+                h(
+                  "article",
+                  { className: "source-card" },
+                  h("h3", null, "App Store / Apple Arcade"),
+                  h("p", null, "用于确认平台和游戏类型。"),
+                  h("a", { href: "https://apps.apple.com/us/app/sneaky-sasquatch/id1465346522", target: "_blank", rel: "noreferrer" }, "打开 App Store 页面")
+                )
+              )
+            )
+          ),
+          h(
+            "footer",
+            null,
+            h(
+              "div",
+              { className: "band" },
+              h("span", null, "Sneaky Sasquatch 中文攻略站 MVP · React 单页原型"),
+              h("span", null, "下一步：详情页、清单勾选、互动地图、投稿纠错")
+            )
+          )
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(h(App));
+    </script>
+  </body>
+</html>
